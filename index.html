@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Venkatesh Madarakhandi — Portfolio</title>
+  <meta name="description" content="Portfolio of Venkatesh Madarakhandi — Cybersecurity & Python enthusiast" />
+  <style>
+    :root{
+      /* Light Theme Colors */
+      --light-bg: #ffffff; /* Tailwind slate-50 */
+      --light-card: lch(100% 0.01 296.81); /* White */
+      --light-text: #1e293b; /* Tailwind slate-800 */
+      --light-muted: #64748b; /* Tailwind slate-500 */
+      --light-border: #e2e8f0; /* Tailwind slate-200 */
+
+      --accent:#06b6d4; /* Cyan */
+      --accent2:#7c3aed; /* Violet */
+      --rad:14px;
+      color-scheme: light; /* Explicitly set to light mode */
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:var(--light-bg);color:var(--light-text);scroll-behavior:smooth;}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1100px;margin:0 auto;padding:32px}
+
+    /* --- MODIFIED: Header links are now centered --- */
+    header{display:flex;align-items:center;justify-content:center;margin-bottom:18px;position:relative;z-index:10;}
+    /* .logo div removed */
+    
+    /* --- MODIFIED: Profile photo styling for a much larger, centered image --- */
+    .profile-photo {
+        width: 240px; /* Increased from 200px */
+        height: 240px; /* Increased from 200px */
+        border-radius: 50%;
+        object-fit: cover;
+        border: 6px solid var(--accent); /* Slightly thicker border */
+        box-shadow: 0 15px 35px rgba(0,0,0,0.25); /* Adjusted shadow */
+        transition: transform 0.3s ease-in-out;
+        margin-bottom: 30px; /* Increased space below the image */
+    }
+    .profile-photo:hover {
+        transform: scale(1.02); /* Subtle hover effect */
+    }
+
+    nav a{margin-left:16px;color:var(--light-muted);font-weight:600;transition: all 0.3s ease;}
+    nav a:not(.btn):hover {
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+    /* --- NEW: Add margin to first nav link to balance spacing --- */
+    nav a:first-child {
+        margin-left: 0;
+    }
+
+
+    /* --- MODIFIED: Hero section for centered content, with photo first --- */
+    .hero{
+        display: flex;
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center; /* Center horizontally */
+        text-align: center; /* Center text */
+        margin-bottom: 48px;
+        padding-top: 50px; /* Increased top padding */
+    }
+    .hero-content {
+        max-width: 800px;
+        margin-top: 25px; /* Space after name/title */
+    }
+
+    /* --- NEW: Styling for name below the photo --- */
+    h1.main-name{
+      font-size:48px; /* Larger font size for main name */
+      margin:0 0 8px;
+      font-weight: 900;
+      color: var(--light-text);
+      /* Can add animated gradient if preferred, similar to original h1 */
+      background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent));
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradient-flow 4s linear infinite;
+      display: inline-block;
+    }
+    /* --- NEW: Styling for title below the name --- */
+    h2.main-title{
+        font-size: 20px;
+        color: var(--light-muted);
+        font-weight: 600;
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+    /* --- NEW: Styling for the animated greeting --- */
+    h3.animated-greeting {
+        font-size: 32px; /* Smaller than main name, larger than normal H2 */
+        margin: 0 0 10px;
+        font-weight: 800;
+        color: var(--light-text);
+        position: relative;
+        display: inline-block; /* For the accent line */
+        padding-bottom: 10px;
+    }
+    h3.animated-greeting::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background: linear-gradient(90deg, var(--accent), var(--accent2));
+        border-radius: 2px;
+    }
+
+
+    /* --- MODIFIED: Card styling for light theme --- */
+    .card{
+      background:var(--light-card);
+      padding:28px;
+      border-radius:var(--rad);
+      box-shadow:0 6px 30px rgba(0,0,0,0.1);
+      border: 1px solid var(--light-border);
+      transition: all 0.3s ease;
+    }
+    .card:hover {
+        box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        transform: translateY(-3px);
+    }
+
+    @keyframes gradient-flow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* --- Removed original h1 and h2 styling from here, as they are now specific (main-name, main-title, animated-greeting) --- */
+    p.lead{color:var(--light-muted);margin-top:14px;line-height:1.7;font-size:17px;}
+
+    .actions{display:flex;gap:12px;margin-top:24px;justify-content:center;}
+    
+    /* --- MODIFIED: Button styling for light theme --- */
+    .btn{
+      padding:12px 20px;
+      border-radius:12px;
+      font-weight:700;
+      background:var(--light-card);
+      border:1px solid var(--light-border);
+      color: var(--light-text);
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      border-color: var(--accent);
+    }
+    .btn.primary{
+        background:linear-gradient(90deg,var(--accent),var(--accent2));
+        color:#ffffff; /* White text on primary buttons */
+        border:none;
+        box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+    }
+    .btn.primary:hover {
+      background: linear-gradient(90deg, var(--accent2), var(--accent));
+      box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4);
+    }
+
+    /* --- NEW: Social links styling --- */
+    .social-links {
+        margin-top: 24px;
+        font-size: 15px;
+        color: var(--light-muted);
+    }
+    .social-links a {
+        color: var(--accent);
+        font-weight: 600;
+        margin: 0 8px;
+        transition: color 0.3s ease, transform 0.3s ease;
+    }
+    .social-links a:hover {
+        color: var(--accent2);
+        transform: translateY(-2px);
+    }
+
+
+    /* --- NEW: Profile contact card --- */
+    .profile-card{
+        display:grid;
+        grid-template-columns: 1fr 1fr; /* Two columns */
+        gap: 16px 28px; /* Row and column gap */
+        margin-top: 36px;
+        padding: 28px;
+        background: var(--light-card);
+        border-radius: var(--rad);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        border: 1px solid var(--light-border);
+        width: 100%; /* Make it span full width in hero */
+        max-width: 800px; /* Constrain its max-width */
+    }
+    .profile-card .section-item {
+        margin-bottom: 0; /* Remove default margin */
+    }
+    .profile-card .section-item div:first-child {
+        font-size: 12px;
+        color: var(--light-muted);
+        margin-bottom: 4px;
+    }
+    .profile-card .section-item div:last-child {
+        font-weight: 700;
+        color: var(--light-text);
+        font-size: 15px;
+    }
+
+    section{margin-bottom:36px}
+    .section-title{
+        font-size:24px;
+        color:var(--light-text);
+        font-weight:800;
+        margin-bottom:20px;
+        text-align: center;
+        position: relative;
+        padding-bottom: 10px;
+    }
+    .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(90deg, var(--accent), var(--accent2));
+        border-radius: 2px;
+    }
+
+
+    .skills-grid{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;}
+    
+    /* --- MODIFIED: Skill styling for light theme --- */
+    .skill{
+      background:var(--light-bg);
+      padding:8px 12px;
+      border-radius:8px;
+      font-weight:600;
+      color:var(--light-text);
+      border: 1px solid var(--light-border);
+      transition: all 0.3s ease;
+      font-size: 14px;
+    }
+    .skill:hover {
+      background: var(--accent);
+      color: #ffffff;
+      transform: scale(1.05);
+      cursor: default;
+      border-color: var(--accent);
+      box-shadow: 0 4px 10px rgba(6, 182, 212, 0.2);
+    }
+
+    .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;}
+    
+    /* --- MODIFIED: Project card styling for light theme --- */
+    .project{
+      padding:20px;
+      border-radius:var(--rad);
+      background:var(--light-card);
+      box-shadow:0 4px 15px rgba(0,0,0,0.08);
+      border: 1px solid var(--light-border);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .project:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      border-color: var(--accent);
+    }
+    .project h3{margin:0 0 10px;font-size: 20px;color:var(--light-text);}
+    .project p{margin:0;color:var(--light-muted);line-height:1.6;font-size:15px;}
+
+    /* --- MODIFIED: Style for clickable project link --- */
+    .project-link {
+        text-decoration: none; /* Removes underline from the link */
+        height: 100%; /* ADDED: This makes the link fill the card */
+        display: flex; /* ADDED: To make the content align */
+        flex-direction: column; /* ADDED: To stack h3 and p */
+    }
+    .project-link:hover h3 {
+        /* Optional: Add hover effect to the link text */
+        color: var(--accent);
+    }
+    .project:hover {
+        /* Make the hover effect even more pronounced for a link */
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        border-color: var(--accent2); /* Use the other accent color */
+    }
+
+
+    footer{display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--light-border);color:var(--light-muted);font-size:14px;margin-top: 48px;}
+
+    @media (max-width:880px){
+      /* --- MODIFIED: Responsive adjustments for hero and photo --- */
+      .hero{padding-top: 20px;}
+      .profile-photo{width:180px;height:180px; margin-bottom: 20px;} /* Increased mobile size */
+      h1.main-name{font-size: 40px;}
+      h2.main-title{font-size: 18px; margin-bottom: 15px;}
+      h3.animated-greeting{font-size: 28px;}
+      .hero-content{margin-top: 20px;}
+
+      nav{display:none}
+      .actions{flex-direction: column; gap: 10px;}
+      .profile-card { grid-template-columns: 1fr; gap: 12px; margin-top: 24px; }
+      .container { padding: 20px; }
+      .section-title { font-size: 20px; }
+    }
+
+    .reveal{opacity:0;transform:translateY(20px);transition:all 700ms cubic-bezier(.2,.9,.2,1)}
+    .reveal.visible{opacity:1;transform:none}
+
+    /* --- MODIFIED: Form styles for light theme --- */
+    input[type="text"], input[type="email"], textarea {
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid var(--light-border);
+      background: var(--light-bg);
+      color: var(--light-text);
+      font-family: inherit;
+      transition: all 0.3s ease;
+      outline: none;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+    }
+    input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.2), inset 0 1px 3px rgba(0,0,0,0.05);
+    }
+    input::placeholder, textarea::placeholder{color:var(--light-muted)}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a href="/mnt/data/VENKATES_RESUME.pdf" id="resume" class="btn" download>Resume</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="hero reveal">
+        
+        <img src="venkatesh.jpg" alt="Venkatesh Madarakhandi" class="profile-photo">
+
+        <h1 class="main-name">Venkatesh Madarakhandi</h1>
+        <h2 class="main-title">Cybersecurity • Python • Linux</h2>
+        
+        <div class="hero-content">
+            
+            <h3 class="animated-greeting">Hi there, I’m Venkatesh.</h3>
+            <p class="lead">As a final-year Computer Science student, I'm an aspiring Cybersecurity professional with strong foundations in Python, networking, and ethical hacking. I build practical security projects and continually learn hands-on through platforms like TryHackMe. I am actively seeking internship and entry-level roles in cybersecurity and cloud security.</p>
+
+            <div class="actions">
+                <a class="btn primary" href="#projects">View Projects</a>
+                <a class="btn" href="/mnt/data/VENKATES_RESUME.pdf" download>Download Resume</a>
+            </div>
+
+            <div class="social-links">Connect —
+                <a href="https://github.com/mevenky2004" target="_blank">GitHub</a> •
+                <a href="https://www.linkedin.com/in/venkatesh-madharkhandi-77570b2b3/" target="_blank">LinkedIn</a> •
+                <a href="https://www.instagram.com/v_e_n_k_y.reddy/" target="_blank">Instagram</a> •
+                <a href="http://www.youtube.com/@venkytalkskannada" target="_blank">YouTube</a>
+            </div>
+        </div>
+
+        <div class="profile-card reveal">
+            <div class="section-item">
+                <div>Email</div>
+                <div>venkateshmadharkhandi@gmail.com</div>
+            </div>
+            <div class="section-item">
+                <div>Phone</div>
+                <div>+91 8296360743</div>
+            </div>
+            <div class="section-item">
+                <div>Education</div>
+                <div>B.Tech — VTU (2022–2026)</div>
+            </div>
+            <div class="section-item">
+                <div>Location</div>
+                <div>Karnataka, India</div> 
+            </div>
+        </div>
+      </div>
+
+      <section id="about" class="reveal card">
+        <div class="section-title">About Me</div>
+        <p style="color:var(--light-muted);line-height:1.7;font-size:16px;">I am a passionate and driven final-year Computer Science and Business Systems student at VTU, specializing in cybersecurity. My journey involves a strong commitment to hands-on learning, where I continuously build proof-of-concept security projects, actively participate in Capture The Flag (CTF) challenges, and master practical defensive and offensive security techniques. Platforms like TryHackMe are integral to my learning process, allowing me to translate theoretical knowledge into real-world skills. I am currently seeking dynamic internship and entry-level roles where I can apply my growing expertise in cybersecurity and cloud security, contribute meaningfully to a team, and further develop my professional capabilities.</p>
+      </section>
+
+      <section id="skills">
+        <div class="section-title">Skills & Tools</div>
+        <div class="skills-grid reveal">
+          <div class="skill">Python</div>
+          <div class="skill">C / C++</div>
+          <div class="skill">DSA</div> <div class="skill">Linux Terminal</div>
+          <div class="skill">Operating Systems</div> 
+          <div class="skill">Git & GitHub</div>
+          <div class="skill">TryHackMe</div>
+          <div class="skill">SQL</div>
+          <div class="skill">Network Security</div>
+          <div class="skill">Ethical Hacking</div>
+          <div class="skill">Cryptography</div> 
+          <div class="skill">Vulnerability Assessment</div>
+          <div class="skill">Penetration Testing (Basic)</div>
+          <div class="skill">Cloud Security (Basic)</div>
+          <div class="skill">AI Tools</div> 
+        </div>
+      </section>
+
+
+      <section id="projects">
+        <div class="section-title">Selected Projects</div>
+        <div class="projects">
+
+          <article class="project reveal">
+            <a href="https://onlinebillingsystem.vercel.app" target="_blank" class="project-link">
+              <h3>Online Billing System (Live)</h3>
+              <p>A full-stack, secure billing application designed to generate, manage, and track invoices. Features multi-user authentication and leverages Google Firebase Database for real-time, persistent storage of items, clients, and invoice data. Deployed live on Vercel.</p>
+            </a>
+          </article>
+
+          <article class="project reveal">
+            <h3>Movie Recommendation System</h3>
+            <p>Developed a content-based filtering recommendation system in Python, leveraging feature extraction and similarity metrics to suggest films based on user preferences. Focused on optimizing recommendation accuracy and efficiency.</p>
+          </article>
+
+          <article class="project reveal">
+            <h3>Image Steganography in Social Networks (2024)</h3>
+            <p>Implemented advanced steganographic techniques to embed secret messages within images, evaluating their robustness against detection and suitability for secure communication on social platforms.</p>
+          </article>
+
+          <article class="project reveal">
+            <h3>Learning & Practical Labs</h3>
+            <p>Extensive hands-on practice on TryHackMe and within the Linux terminal, developing proficiency in network scanning (Nmap), vulnerability assessment (OpenVAS), and fundamental exploitation techniques. Focused on practical application of cybersecurity concepts.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="reveal card">
+        <div class="section-title">Get In Touch</div>
+        <p style="color:var(--light-muted);text-align:center;max-width:600px;margin:0 auto 20px;">I'm always open to new opportunities and collaborations. Feel free to reach out via email or connect with me on social media. I look forward to hearing from you!</p>
+
+        <form onsubmit="return sendMail(event)" style="margin-top:20px;display:flex;flex-direction:column;gap:12px;max-width:520px;margin-left:auto;margin-right:auto;">
+          <input required type="text" placeholder="Your name" />
+          <input required type="email" placeholder="Your email" />
+          <textarea required placeholder="Message" rows="5"></textarea>
+          <div style="display:flex;gap:10px;justify-content:center;margin-top:10px;"><button class="btn primary" type="submit">Send Message</button><button class="btn" type="reset">Clear Form</button></div>
+        </form>
+      </section>
+
+    </main>
+
+    <footer>
+      <div>© <span id="year"></span> Venkatesh Madarakhandi</div>
+      <div style="font-size:13px;color:var(--light-muted)">Crafted with passion • Inspired by modern design trends</div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting) e.target.classList.add('visible');
+      });
+    }, {threshold:0.12});
+    reveals.forEach(r=>obs.observe(r));
+
+    function sendMail(e){
+      e.preventDefault();
+      const form = e.target;
+      const name = form[0].value;
+      const email = form[1].value;
+      const message = form[2].value;
+      const subject = encodeURIComponent('Portfolio contact from '+name);
+      const body = encodeURIComponent('From: '+name+' ('+email+')\n\n'+message);
+      window.location.href = `mailto:venkateshmadharkhandi@gmail.com?subject=${subject}&body=${body}`;
+      // Optional: Clear form after opening mail client
+      form.reset(); 
+      return false;
+    }
+  </script>
+
+  <script>
+    window.onbeforeunload = function () {
+      window.scrollTo(0, 0);
+    };
+  </script>
+</body>
+</html>
