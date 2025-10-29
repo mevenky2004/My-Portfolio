@@ -8,8 +8,8 @@
   <style>
     :root{
       /* Light Theme Colors */
-      --light-bg: #ffffff; /* Tailwind slate-50 */
-      --light-card: lch(100% 0.01 296.81); /* White */
+      --light-bg: #f8fafc; /* Tailwind slate-50 */
+      --light-card: #ffffff; /* White */
       --light-text: #1e293b; /* Tailwind slate-800 */
       --light-muted: #64748b; /* Tailwind slate-500 */
       --light-border: #e2e8f0; /* Tailwind slate-200 */
@@ -269,6 +269,9 @@
       border: 1px solid var(--light-border);
       transition: all 0.3s ease;
       cursor: pointer;
+      display: flex; /* ADDED: for flex-direction */
+      flex-direction: column; /* ADDED: to stack h3 and p */
+      height: 100%; /* ADDED: to ensure cards are equal height in a grid row */
     }
     .project:hover {
       transform: translateY(-5px);
@@ -281,9 +284,9 @@
     /* --- MODIFIED: Style for clickable project link --- */
     .project-link {
         text-decoration: none; /* Removes underline from the link */
-        height: 100%; /* ADDED: This makes the link fill the card */
-        display: flex; /* ADDED: To make the content align */
-        flex-direction: column; /* ADDED: To stack h3 and p */
+        height: 100%; 
+        display: flex; 
+        flex-direction: column; 
     }
     .project-link:hover h3 {
         /* Optional: Add hover effect to the link text */
@@ -353,7 +356,7 @@
         <img src="venkatesh.jpg" alt="Venkatesh Madarakhandi" class="profile-photo">
 
         <h1 class="main-name">Venkatesh Madarakhandi</h1>
-        <h2 class="main-title">Computer Science Engineer</h2>
+        <h2 class="main-title">Cybersecurity • Python • Linux</h2>
         
         <div class="hero-content">
             
@@ -367,9 +370,9 @@
 
             <div class="social-links">Connect —
                 <a href="https://github.com/mevenky2004" target="_blank">GitHub</a> •
-                <a href="https://www.linkedin.com/in/venkatesh-madharkhandi-77570b2b3/" target="_blank">LinkedIn</a> •
-                <a href="https://www.instagram.com/v_e_n_k_y.reddy/" target="_blank">Instagram</a> •
-                <a href="http://www.youtube.com/@venkytalkskannada" target="_blank">YouTube</a>
+                <a href="https://linkedin.com/in/venkatesh-madharkhandi" target="_blank">LinkedIn</a> •
+                <a href="#" target="_blank">Instagram</a> •
+                <a href="#" target="_blank">YouTube</a>
             </div>
         </div>
 
@@ -380,7 +383,7 @@
             </div>
             <div class="section-item">
                 <div>Phone</div>
-                <div>+91 8296360743</div>
+                <div>+91 82963 0743</div>
             </div>
             <div class="section-item">
                 <div>Education</div>
@@ -431,13 +434,17 @@
           </article>
 
           <article class="project reveal">
-            <h3>Movie Recommendation System</h3>
-            <p>Developed a content-based filtering recommendation system in Python, leveraging feature extraction and similarity metrics to suggest films based on user preferences. Focused on optimizing recommendation accuracy and efficiency.</p>
+            <a href="https://github.com/mevenky2004/Project" target="_blank" class="project-link">
+              <h3>Movie Recommendation System</h3>
+              <p>Developed a content-based filtering recommendation system in Python, leveraging feature extraction and similarity metrics to suggest films based on user preferences. Focused on optimizing recommendation accuracy and efficiency.</p>
+            </a>
           </article>
 
           <article class="project reveal">
+            <a href="https://github.com/mevenky2004/image-stegnography" target="_blank" class="project-link">
             <h3>Image Steganography in Social Networks (2024)</h3>
             <p>Implemented advanced steganographic techniques to embed secret messages within images, evaluating their robustness against detection and suitability for secure communication on social platforms.</p>
+            </a>
           </article>
 
           <article class="project reveal">
