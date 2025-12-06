@@ -346,7 +346,9 @@
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
-        <a href="/mnt/data/VENKATES_RESUME.pdf" id="resume" class="btn" download>Resume</a>
+
+        <!-- UPDATED: use relative path and provide a suggested filename -->
+        <a href="VENKATES_RESUME.pdf" id="resume" class="btn" download="Venkatesh_Madarakhandi_Resume.pdf">Resume</a>
       </nav>
     </header>
 
@@ -365,7 +367,9 @@
 
             <div class="actions">
                 <a class="btn primary" href="#projects">View Projects</a>
-                <a class="btn" href="/mnt/data/VENKATES_RESUME.pdf" download>Download Resume</a>
+
+                <!-- UPDATED: relative path + suggested filename -->
+                <a class="btn" href="VENKATES_RESUME.pdf" download="Venkatesh_Madarakhandi_Resume.pdf">Download Resume</a>
             </div>
 
             <div class="social-links">Connect —
@@ -499,6 +503,44 @@
       return false;
     }
   </script>
+
+  <!-- Optional JS fallback: fetch the PDF and force download (uncomment to use) -->
+  <!--
+  <script>
+    function forceDownload(url, filename) {
+      fetch(url)
+        .then(resp => {
+          if (!resp.ok) throw new Error('Network response not ok');
+          return resp.blob();
+        })
+        .then(blob => {
+          const blobUrl = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = blobUrl;
+          a.download = filename;
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          URL.revokeObjectURL(blobUrl);
+        })
+        .catch(err => {
+          console.error('Download failed:', err);
+          window.open(url, '_blank');
+        });
+    }
+
+    // Example: force the resume link to use JS fallback
+    document.addEventListener('DOMContentLoaded', () => {
+      const resumeLink = document.getElementById('resume');
+      if (!resumeLink) return;
+      resumeLink.addEventListener('click', function(e) {
+        // Uncomment the two lines below to force the JS fallback for downloads:
+        // e.preventDefault();
+        // forceDownload('VENKATES_RESUME.pdf', 'Venkatesh_Madarakhandi_Resume.pdf');
+      });
+    });
+  </script>
+  -->
 
   <script>
     window.onbeforeunload = function () {
